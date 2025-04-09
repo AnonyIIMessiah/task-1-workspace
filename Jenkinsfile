@@ -5,6 +5,10 @@ pipeline {
         pollSCM('* * * * *') //every minute
     }
 
+    environment {
+        USER_ARN = credentials('USER_ARN')
+    }
+
     stages {
         stage("Checkout") {
             steps {
@@ -26,7 +30,7 @@ pipeline {
             steps {
                 dir('eks-terraform') {
                     script {
-                        sh 'terraform plan -out=tfplan'
+                        sh 'terraform plan -var="user_arn=${USER_ARN}" -out=tfplan'
                     }
                 }
             }
@@ -35,7 +39,7 @@ pipeline {
             steps {
                 dir('eks-terraform') {
                     script {
-                        sh 'terraform apply -auto-approve '
+                        sh 'terraform apply -var="user_arn=${USER_ARN}" -auto-approve '
                     }
                 }
             }
