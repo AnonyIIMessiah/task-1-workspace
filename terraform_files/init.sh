@@ -19,10 +19,10 @@ chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
 
 
 # Clone the repo containing docker-compose.yml
-git clone https://github.com/AnonyIIMessiah/test.git /home/ubuntu/test
+git clone https://github.com/AnonyIIMessiah/task-1-workspace.git /home/ubuntu/task-1-workspace
 
 # Navigate to the repo
-cd /home/ubuntu/test
+cd /home/ubuntu/task-1-workspace/terraform_files/jenkins-docker-compose
 
 # Optional: ensure docker-compose.yml is present
 
