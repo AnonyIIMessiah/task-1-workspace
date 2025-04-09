@@ -16,4 +16,4 @@ RUN apt-get update && \
     && apt-get update \
     && apt-get install -y terraform 
 
-ENV JAVA_OPTS="-Djenkins.install.runSetupWizard=false"
+# ENV JAVA_OPTS="-Djenkins.install.runSetupWizard=false"
