@@ -9,7 +9,7 @@ resource "aws_eks_cluster" "task-eks" {
   version  = "1.31"
 
   vpc_config {
-    subnet_ids = aws_subnet.eks_subnet[*].id
+    subnet_ids = data.aws_subnets.eks_subnet.ids
 
     endpoint_public_access = true
   }
