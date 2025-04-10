@@ -14,6 +14,12 @@ RUN apt-get update && \
     https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
     tee /etc/apt/sources.list.d/hashicorp.list \
     && apt-get update \
-    && apt-get install -y terraform 
+    && apt-get install -y terraform \
+    && curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | tee /usr/share/keyrings/helm.gpg > /dev/null \
+    && apt-get install apt-transport-https --yes \
+    && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | tee /etc/apt/sources.list.d/helm-stable-debian.list \
+    && apt-get update \
+    && apt-get install helm \
+    && apt-get clean
 
 # ENV JAVA_OPTS="-Djenkins.install.runSetupWizard=false"
