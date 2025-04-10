@@ -5,6 +5,7 @@ USER root
 RUN apt-get update && \
     apt-get install -y git curl unzip wget \
     gnupg software-properties-common \
+    docker.io \
     && curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \
     && unzip awscliv2.zip \
     && ./aws/install \
@@ -25,8 +26,6 @@ RUN apt-get update && \
     && echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check \
     &&  install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl \
     && apt-get clean \
-
-
-
+    
 
 # ENV JAVA_OPTS="-Djenkins.install.runSetupWizard=false"
