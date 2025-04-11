@@ -22,6 +22,8 @@ resource "helm_release" "ebs_csi_driver" {
 
   depends_on = [
     aws_eks_cluster.task-eks,
-    aws_iam_role_policy_attachment.ebs_csi_driver_policy
+    aws_iam_role_policy_attachment.ebs_csi_driver_policy,
+    aws_eks_access_policy_association.admin_policy,
+    aws_eks_access_entry.user_1,
   ]
 }
